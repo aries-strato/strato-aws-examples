@@ -1,2 +1,3 @@
-# EC2 VPC with DNS and NTP forwarding example
-In this terraform we will create a VPC with DNS and NTP forwarding specified. Any subnets that get created will forward their DNS and NTP requests to those respective IP addresses. 
+# EC2 VPC with Tagged Subnets
+
+We will deploy a VPC and two tagged subnets. Then we will deploy EC2 instances that will attach based on the given subnet tag. 

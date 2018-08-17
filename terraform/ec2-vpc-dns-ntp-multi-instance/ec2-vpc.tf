@@ -73,7 +73,8 @@ resource "aws_instance" "myapp_instance" {
     subnet_id = "${aws_subnet.myapp_subnet.id}"
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
     count = "${var.instance_number}"
-    key_name = "tf_demo10"
+    # Key for testing
+    # key_name = "tf_demo10"
     tags{
         Name="my_instance_${count.index}"
     }
