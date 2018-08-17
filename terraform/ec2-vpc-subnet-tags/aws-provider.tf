@@ -1,3 +1,4 @@
+
 provider "aws" {
     access_key = "${var.access_key}"
     secret_key = "${var.secret_key}"
@@ -15,3 +16,14 @@ provider "aws" {
     # Pinning AWS provider to 1.28 for Symphony 
     version = "1.28"
 }
+
+
+/*
+provider "aws" {
+
+  access_key = "${var.access_key}"
+  secret_key = "${var.secret_key}"
+  region = "eu-west-1"
+  version = "1.28"
+}
+*/

@@ -31,7 +31,7 @@ resource "aws_subnet" "private1_subnet"{
     cidr_block = "192.168.10.0/24"
     vpc_id = "${aws_vpc.myapp_vpc.id}"
     tags {
-      Name = "Demo subnet"
+      Name = "Private 1 subnet"
       Tier = "private"
     }
     # Makes sure DHCP configuration is absorbed in the subnet - Symphony specific
@@ -43,7 +43,7 @@ resource "aws_subnet" "private2_subnet"{
     cidr_block = "192.168.11.0/24"
     vpc_id = "${aws_vpc.myapp_vpc.id}"
     tags {
-      Name = "Demo subnet"
+      Name = "Private 2 subnet"
       Tier = "private"
     }
     # Makes sure DHCP configuration is absorbed in the subnet - Symphony specific
@@ -55,7 +55,7 @@ resource "aws_subnet" "public1_subnet"{
     cidr_block = "192.168.20.0/24"
     vpc_id = "${aws_vpc.myapp_vpc.id}"
     tags {
-      Name = "Demo subnet"
+      Name = "Public 1 subnet"
       Tier = "public"
     }
     # Makes sure DHCP configuration is absorbed in the subnet - Symphony specific
@@ -67,7 +67,7 @@ resource "aws_subnet" "public2_subnet"{
     cidr_block = "192.168.21.0/24"
     vpc_id = "${aws_vpc.myapp_vpc.id}"
     tags {
-      Name = "Demo subnet"
+      Name = "Public 2 subnet"
       Tier = "public"
     }
     # Makes sure DHCP configuration is absorbed in the subnet - Symphony specific
@@ -117,8 +117,6 @@ resource "aws_instance" "private_instance" {
     subnet_id = "${element(data.aws_subnet_ids.private.ids, count.index)}" 
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
     count = "${var.instance_number}"
-    # My key for testing
-    key_name = "tf_demo10"
     tags{
         Name="private_instance_${count.index}"
     }
@@ -132,8 +130,6 @@ resource "aws_instance" "public_instance" {
     subnet_id = "${element(data.aws_subnet_ids.private.ids, count.index)}" 
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
     count = "${var.instance_number}"
-    # My key for testing
-    key_name = "tf_demo10"
     tags{
         Name="public_instance_${count.index}"
     }
