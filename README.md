@@ -3,7 +3,7 @@ Examples of AWS API integrations with Stratoscale Symphony
 
 ## Welcome!
 This repository aims to examplify and document some of the common AWS use cases
-stratoscale supports, as well as helping you get started with aws tooling against Stratoscale Symphony.
+Stratoscale supports, as well as helping you get started with aws tooling against Stratoscale Symphony.
 
 ## General Information
 Currently supported service apis include:
