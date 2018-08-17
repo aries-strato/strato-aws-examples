@@ -2,23 +2,20 @@
 # Remember to omit the .sample from the extension prior to running Terraform
 
 
-# Region Credentials
-#symphony_ip = "
-
-
 # Region Credentials 
+
 symphony_ip = ""
 access_key = ""
 secret_key = ""
 
-# Reccomend for you to use Xenial's latest cloud image
+
+
+# Reccomended for you to use Xenial's latest cloud image
 # located here: https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img 
 
-# demo 10 ami
-ami_image = ""
+# Image AMI ID 
 
-#CSM cluster ami
-#ami_image = ""
+ami_image = ""
 
 
 # optional
