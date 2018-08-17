@@ -1,5 +1,3 @@
-
-
 # Creating a VPC & Networking
 
 # VPC creation
@@ -157,7 +155,7 @@ resource "aws_eip" "public_instance_eip" {
 
 # Associating EIP with private instances that get deployed
 
-resource "aws_eip_association" "myapp_eip_assoc" {
+resource "aws_eip_association" "private_eip_assoc" {
   count = "${var.instance_number}"
   instance_id = "${element(aws_instance.private_instance.*.id, count.index)}"
   allocation_id = "${element(aws_eip.private_instance_eip.*.id, count.index)}"
@@ -165,7 +163,7 @@ resource "aws_eip_association" "myapp_eip_assoc" {
 
 # Associating EIP with public instances that get deployed
 
-resource "aws_eip_association" "myapp_eip_assoc" {
+resource "aws_eip_association" "public_eip_assoc" {
   count = "${var.instance_number}"
   instance_id = "${element(aws_instance.public_instance.*.id, count.index)}"
   allocation_id = "${element(aws_eip.public_instance_eip.*.id, count.index)}"
