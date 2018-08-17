@@ -12,4 +12,6 @@ provider "aws" {
 
     # No importance for this value currently
     region = "us-east-2"
+    # Pinning aws provider to 1.28 for Symphony 4.2.7
+    version = "1.28"
 }

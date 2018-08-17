@@ -4,9 +4,9 @@ variable "secret_key" {}
 variable "access_key" {}
 variable "ami_image" {}
 variable "instance_number" {
-  default = 1
+  default = 20
 }
 variable "instance_type" {
-  default = "t2.micro"
+  default = "t2.nano"
 }
 

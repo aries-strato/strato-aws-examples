@@ -1,6 +1,6 @@
 # Overview - EC2 Web Server
-This terraform example will create 3 ubuntu instances, and install nginx on them using userdata.sh.
-The userdata.sh script will also query the metadata service in order to present the instnace ID in the nginx web server.
+This terraform example will create 3 ubuntu instances, and install docker and launch an apache (httpd) container on them using the provided cloudinit file.
+The cloudinit file will also query the metadata service in order to present the instance ID via the HTML file that is created on each instance. 
 To get the ami id, simply fetch the image uuid from the Symphony UI, and convert it to the AWS format:
 `ami-<uuid without dashes>`
 
