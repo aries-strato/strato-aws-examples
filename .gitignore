@@ -118,3 +118,4 @@ Temporary Items
 *.retry
 *.tfvars
 *.tfvars
+*.tfvars

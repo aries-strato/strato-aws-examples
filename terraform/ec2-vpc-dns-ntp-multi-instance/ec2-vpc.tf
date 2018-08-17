@@ -5,7 +5,8 @@
 
 resource "aws_vpc" "myapp_vpc" {
   cidr_block = "192.168.0.0/16"
-  enable_dns_support = false
+  enable_dns_support = true
+  enable_dns_hostnames = true
 
   tags {
     Name = "Demo VPC"
@@ -32,6 +33,9 @@ resource "aws_vpc_dhcp_options_association" "foo" {
   vpc_id          = "${aws_vpc.myapp_vpc.id}"
   dhcp_options_id = "${aws_vpc_dhcp_options.foo.id}"
 }
+
+# Subnet creation 
+
 resource "aws_subnet" "myapp_subnet"{
     cidr_block = "192.168.10.0/24"
     vpc_id = "${aws_vpc.myapp_vpc.id}"
@@ -42,6 +46,8 @@ resource "aws_subnet" "myapp_subnet"{
     # Makes sure DHCP configuration is absorbed in the subnet - Symphony specific
     depends_on = ["aws_vpc_dhcp_options_association.foo"]
 }
+
+# Internet gateway 
 
 resource "aws_internet_gateway" "myapp_gw" {
   vpc_id = "${aws_vpc.myapp_vpc.id}"
