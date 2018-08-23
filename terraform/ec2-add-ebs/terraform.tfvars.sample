@@ -1,0 +1,24 @@
+# .tfvars Sample File
+# Remember to omit the .sample from the extension prior to running Terraform
+
+
+# Region Credentials 
+
+symphony_ip = ""
+access_key = ""
+secret_key = ""
+
+
+
+# Reccomended for you to use Xenial's latest cloud image
+# located here: https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img 
+
+# Image AMI ID 
+
+ami_image = ""
+
+
+# optional
+# instance_type = "<instance-type>"
+# instance_number = <number of instances>
+
