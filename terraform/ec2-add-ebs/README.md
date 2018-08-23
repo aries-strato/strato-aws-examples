@@ -14,6 +14,8 @@ To get the ami id, simply fetch the image uuid from the Symphony UI, and convert
 3. Set the alias of your desired pool with the following command - `storage pool update --pool-id [pool id] --alias [alias]`
 
 Example - 
+
+```
 Symphony > storage pool list -c id -c name
 +--------------------------------------+------+
 | id                                   | name |
@@ -27,6 +29,6 @@ Symphony > storage pool update --pool-id c2b70e37-bde8-4be9-a1d6-6300cc1c4802 --
 +-------+---------+
 | value | Success |
 +-------+---------+
-
+```
 4. Your options for the alias are either `sc1`, `io1`, `st1`, and `gp2`
 5. You can then specify the volume_type in Terraform
