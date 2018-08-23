@@ -11,10 +11,10 @@ To get the ami id, simply fetch the image uuid from the Symphony UI, and convert
 ## How to tag your Symphony pool
 1. Log into Symp CLI
 2. Get the UUID of your pool (storage pools list -c id -c name)
-3. Set the alias of your desired pool with the following command - `storage pool update --pool-id [pool id] --alias [alias]`
+3. Set the alias of your desired pool with the following command: 
+`storage pool update --pool-id [pool id] --alias [alias]`
 
-Example - 
-
+Example:
 ```
 Symphony > storage pool list -c id -c name
 +--------------------------------------+------+
