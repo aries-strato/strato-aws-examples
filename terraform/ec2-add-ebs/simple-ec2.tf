@@ -5,7 +5,14 @@ resource "aws_instance" "ec2_instance" {
     tags{
         Name="instance${count.index}"
     }
-    # Can use any aws instance type supported by symphony
+    #key_name = "demo10_aries5"
+    
     instance_type = "${var.instance_type}"
     count="${var.instance_number}"
+
+    root_block_device { 
+        volume_size = 33
+        volume_type = "sc1"
+    }
+
 }

@@ -4,7 +4,7 @@ variable "secret_key" {}
 variable "access_key" {}
 variable "ami_image" {}
 variable "instance_number" {
-  default = 20
+  default = 1
 }
 variable "instance_type" {
   default = "t2.nano"
