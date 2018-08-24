@@ -5,7 +5,6 @@ resource "aws_instance" "ec2_instance" {
     tags{
         Name="instance${count.index}"
     }
-    #Demo key for testing
     key_name = "demo10_aries5"
     
     instance_type = "${var.instance_type}"
