@@ -1,0 +1,3 @@
+Inserting some contents of the test file to upload. 
+
+If you can read this file as is from the bucket that was created in this example then your Terraform has successfully ran.
