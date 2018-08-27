@@ -69,7 +69,7 @@ data "template_cloudinit_config" "web_config" {
 
 ###################################
 
-# Creating two instances of web server ami with cloudinit
+# Creating instances of web server ami with cloudinit
 resource "aws_instance" "web" {
     
     ami = "${var.ami_webserver}"
@@ -80,7 +80,7 @@ resource "aws_instance" "web" {
     user_data = "${data.template_cloudinit_config.web_config.rendered}"
 
     tags {
-    Name = "Web server 1"
+    Name = "WebServer-${count.index}"
   }
 
   count = "${var.web_number}"

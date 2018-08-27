@@ -1,5 +1,5 @@
 # Overview - EC2 Web Server
-This terraform example will create 3 ubuntu instances, and install docker and launch an apache (httpd) container on them using the provided cloudinit file.
+This terraform example will create 1 ubuntu instance, and install docker and launch an apache (httpd) container on it using the provided cloudinit file.
 The cloudinit file will also query the metadata service in order to present the instance ID via the HTML file that is created on each instance. 
 To get the ami id, simply fetch the image uuid from the Symphony UI, and convert it to the AWS format:
 `ami-<uuid without dashes>`
@@ -13,4 +13,4 @@ To get the ami id, simply fetch the image uuid from the Symphony UI, and convert
 6. Run `terraform apply`
 
 ## Notes
-The script assumes the local default network can be routed using an existing VLAN
+The script assumes the local default network can be routed using the existing edge network for the VPC enabled tenant. 
