@@ -1,0 +1,21 @@
+# .tfvars Sample File
+# Remember to omit the .sample from the extension prior to running Terraform
+
+
+# Region Credentials 
+
+symphony_ip = ""
+access_key = ""
+secret_key = ""
+
+
+# Image AMI ID 
+# This must be a Windows cloud-ready image with cloudinit installed
+
+ami_image = ""
+
+
+# optional
+# instance_type = "<instance-type>"
+# instance_number = <number of instances>
+
