@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
 
+<!--
+    Modify line 16 to reflect the external IP of your load balancer instance.
+-->
 <html>
    <head>
       
@@ -10,7 +13,7 @@
                alert("WebSocket is supported by your Browser!");
                
                // Let us open a web socket
-               var ws = new WebSocket("ws://10.18.55.27:8080/echo");
+               var ws = new WebSocket("ws://10.18.55.12:8080/echo");
 				
                ws.onopen = function() {
                   
@@ -21,13 +24,13 @@
 				
                ws.onmessage = function (evt) { 
                   var received_msg = evt.data;
-                  alert("Message is received...");
+                  alert("Message is received...WebSockets working!");
                };
 				
                ws.onclose = function() { 
                   
                   // websocket is closed.
-                  alert("Connection is closed..."); 
+                  alert("Connection is closed."); 
                };
             } else {
               

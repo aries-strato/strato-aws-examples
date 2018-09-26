@@ -76,7 +76,7 @@ resource "aws_instance" "web1" {
     ami = "${var.ami_webserver}"
     instance_type = "t2.micro"
     subnet_id = "${aws_subnet.subnet1.id}"
-    
+
     vpc_security_group_ids = ["${aws_security_group.web-sec.id}", "${aws_security_group.allout.id}"]
     user_data = "${data.template_cloudinit_config.web_config.rendered}"
 
@@ -90,7 +90,7 @@ resource "aws_instance" "web2" {
     ami = "${var.ami_webserver}"
     instance_type = "t2.micro"
     subnet_id = "${aws_subnet.subnet1.id}"
-    
+
     vpc_security_group_ids = ["${aws_security_group.web-sec.id}", "${aws_security_group.allout.id}"]
     user_data = "${data.template_cloudinit_config.web_config.rendered}"
 
