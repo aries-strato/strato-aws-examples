@@ -111,8 +111,8 @@ resource "aws_security_group" "web-sec" {
 
   # Internal HTTP access from anywhere
   ingress {
-    from_port   = 8080
-    to_port     = 8080
+    from_port   = 9998
+    to_port     = 9998
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -153,10 +153,10 @@ resource "aws_security_group" "lb-sec" {
   name = "lb-secgroup"
   vpc_id = "${aws_vpc.default.id}"
 
-  # HTTP access from anywhere
+  #
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -189,7 +189,7 @@ resource "aws_alb" "alb" {
 }
 
 resource "aws_alb_target_group" "targ" {
-    port = 8080
+    port = 9998
     protocol = "HTTP"
     vpc_id = "${aws_vpc.default.id}"
 }
@@ -197,13 +197,13 @@ resource "aws_alb_target_group" "targ" {
 resource "aws_alb_target_group_attachment" "attach_web1" {
     target_group_arn = "${aws_alb_target_group.targ.arn}"
     target_id       = "${aws_instance.web1.id}"
-    port             = 8080
+    port             = 9998
 }
 
 resource "aws_alb_target_group_attachment" "attach_web2" {
     target_group_arn = "${aws_alb_target_group.targ.arn}"
     target_id       = "${aws_instance.web2.id}"
-    port             = 8080
+    port             = 9998
 }
 
 resource "aws_alb_listener" "list" {
@@ -212,5 +212,5 @@ resource "aws_alb_listener" "list" {
         type = "forward"
     }
     load_balancer_arn = "${aws_alb.alb.arn}"
-    port = 80
+    port = 8080
 }
