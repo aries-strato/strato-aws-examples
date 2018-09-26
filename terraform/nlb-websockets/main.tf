@@ -88,35 +88,6 @@ resource "aws_instance" "web-server" {
   count = "${var.web_servers_number}"
 }
 
-/*
-resource "aws_instance" "web1" {
-    
-    ami = "${var.ami_webserver}"
-    instance_type = "t2.micro"
-    subnet_id = "${aws_subnet.subnet1.id}"
-
-    vpc_security_group_ids = ["${aws_security_group.web-sec.id}", "${aws_security_group.allout.id}"]
-    user_data = "${data.template_cloudinit_config.web_config.rendered}"
-
-    tags {
-    Name = "Web server 1"
-  }
-}
-
-resource "aws_instance" "web2" {
-     
-    ami = "${var.ami_webserver}"
-    instance_type = "t2.micro"
-    subnet_id = "${aws_subnet.subnet1.id}"
-
-    vpc_security_group_ids = ["${aws_security_group.web-sec.id}", "${aws_security_group.allout.id}"]
-    user_data = "${data.template_cloudinit_config.web_config.rendered}"
-
-    tags {
-    Name = "Web server 2"
-  }
-}
-*/
 
 ##################################
 # Security group definitions
@@ -212,19 +183,6 @@ resource "aws_alb_target_group" "targ" {
     vpc_id = "${aws_vpc.default.id}"
 }
 
-/*
-resource "aws_alb_target_group_attachment" "attach_web1" {
-    target_group_arn = "${aws_alb_target_group.targ.arn}"
-    target_id       = "${aws_instance.web1.id}"
-    port             = 9998
-}
-
-resource "aws_alb_target_group_attachment" "attach_web2" {
-    target_group_arn = "${aws_alb_target_group.targ.arn}"
-    target_id       = "${aws_instance.web2.id}"
-    port             = 9998
-}
-*/
 
 resource "aws_alb_target_group_attachment" "attach_web_servers" {
   target_group_arn = "${aws_alb_target_group.targ.arn}"
