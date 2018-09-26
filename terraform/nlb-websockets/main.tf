@@ -70,7 +70,25 @@ data "template_cloudinit_config" "web_config" {
 
 ###################################
 
-# Creating two instances of web server ami with cloudinit
+# Creating web server instances with cloudinit
+
+resource "aws_instance" "web-server" {
+    
+  ami = "${var.ami_webserver}"
+  instance_type = "${var.web_servers_type}"
+  subnet_id = "${aws_subnet.subnet1.id}"
+
+  vpc_security_group_ids = ["${aws_security_group.web-sec.id}", "${aws_security_group.allout.id}"]
+  user_data = "${data.template_cloudinit_config.web_config.rendered}"
+
+  tags {
+    Name = "Web server ${count.index}"
+  }
+
+  count = "${var.web_servers_number}"
+}
+
+/*
 resource "aws_instance" "web1" {
     
     ami = "${var.ami_webserver}"
@@ -98,7 +116,7 @@ resource "aws_instance" "web2" {
     Name = "Web server 2"
   }
 }
-
+*/
 
 ##################################
 # Security group definitions
@@ -194,6 +212,7 @@ resource "aws_alb_target_group" "targ" {
     vpc_id = "${aws_vpc.default.id}"
 }
 
+/*
 resource "aws_alb_target_group_attachment" "attach_web1" {
     target_group_arn = "${aws_alb_target_group.targ.arn}"
     target_id       = "${aws_instance.web1.id}"
@@ -204,6 +223,14 @@ resource "aws_alb_target_group_attachment" "attach_web2" {
     target_group_arn = "${aws_alb_target_group.targ.arn}"
     target_id       = "${aws_instance.web2.id}"
     port             = 9998
+}
+*/
+
+resource "aws_alb_target_group_attachment" "attach_web_servers" {
+  target_group_arn = "${aws_alb_target_group.targ.arn}"
+  target_id       = "${element(aws_instance.web-server.*.id,count.index)}"
+  port             = 9998
+  count = "${var.web_servers_number}"
 }
 
 resource "aws_alb_listener" "list" {

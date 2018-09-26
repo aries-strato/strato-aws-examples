@@ -1,6 +1,6 @@
-# Overview - Application Load Balancer (ALB/ELBv2)
-This terraform will create two webservers from a given ami, and instantiate a load balancer to actively balance them.
-To get the ami id, simply fetch the image uuid from the Symphony UI, and convert it to the AWS format:
+# Overview - WebSockets with Symphony's ALB Example
+This Terraform will create 2 (or more) webservers running the pywebsocket example from Google, put them behind an ALB, and includes an HTML file you can run from your PC with any web browser that supports web sockets (Latest FireFox and Chrome should work). 
+
 `ami-<uuid without dashes>`
 
 >This example's load balancer is configured as external, you can modify it to internal by modifying the alb-web.tf file
